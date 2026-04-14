@@ -16,7 +16,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         
         // Questa è la tua nuova Dashboard principale: URL è /admin
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         
         // Gestione Profilo dentro l'admin
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
