@@ -21,6 +21,16 @@
                             Modifica
                         </a>
                     </div>
+
+
+                    {{-- Bottone Elimina --}}
+                    <div class="mt-3">
+                        <form action="{{ route("admin.projects.destroy", $project) }}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <input type="submit" class="btn btn-danger btn-sm" value="Elimina">
+                        </form>
+                    </div>
                 </div>
             </div>
 @endsection
