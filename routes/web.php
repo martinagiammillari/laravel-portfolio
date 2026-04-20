@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 // Rotta pubblica (Home)
@@ -17,6 +18,9 @@ Route::middleware(['auth', 'verified'])
         
         // Questa è la tua nuova Dashboard principale: URL è /admin
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource("project", ProjectsController::class);
+    
         
         // Gestione Profilo dentro l'admin
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,4 +28,5 @@ Route::middleware(['auth', 'verified'])
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+   
 require __DIR__.'/auth.php';
