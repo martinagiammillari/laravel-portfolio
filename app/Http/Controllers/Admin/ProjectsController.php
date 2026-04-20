@@ -14,7 +14,7 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects= Project:: all();
-        return view ("layouts.projects.index", compact("projects"));
+        return view ("projects.index", compact("projects"));
     }
 
     /**
@@ -38,7 +38,7 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        return view("layouts.projects.show", compact("project"));
+        return view("projects.show", compact("project"));
     }
 
     /**
