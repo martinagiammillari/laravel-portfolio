@@ -2,11 +2,8 @@
 @section("title", "tutti i progetti")
 
 
-@section("title", "Tutti i progetti")
-
 @section('content')
 <div class="container py-5">
-    <h1>I miei Progetti</h1>
 
     <div class="row">
         @foreach ($projects as $project)
