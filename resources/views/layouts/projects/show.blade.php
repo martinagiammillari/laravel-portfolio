@@ -1,13 +1,8 @@
 @extends("layouts.projects")
-@section("title", "tutti i progetti")
+@section("title", $project->title)
 
-
-@section('content')
-<div class="container py-5">
-
-    <div class="row">
-        @foreach ($projects as $project)
-            <div class="col-md-4 mb-4">
+@section("content")
+<div class="col-md-4 mb-4">
                 <div class="border p-3">
                     <h3>{{ $project->name }}</h3>
                     <p><strong>Cliente:</strong> {{ $project->client ?? 'N/A' }}</p>
@@ -17,18 +12,6 @@
                     @if($project->tech_stack)
                         <p><small>Tecnologie: {{ $project->tech_stack }}</small></p>
                     @endif
-
-                    {{-- Bottone Visualizza --}}
-                    <div class="mt-3">
-                        <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary btn-sm">
-                            Visualizza Dettagli
-                        </a>
-                    </div>
                 </div>
-
             </div>
-
-        @endforeach
-    </div>
-</div>
 @endsection
