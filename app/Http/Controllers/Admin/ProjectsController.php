@@ -51,7 +51,7 @@ class ProjectsController extends Controller
     $newProject->save();
 
     // Redirezione alla rotta index dei progetti
-    return redirect()->route('projects.index', $newProject); 
+    return redirect()->route('admin.projects.index', $newProject); 
 }
 
     /**
