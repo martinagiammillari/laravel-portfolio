@@ -22,16 +22,37 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view("projects.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+   public function store(Request $request)
+{
+    // Recupero tutti i dati dalla richiesta
+    $data = $request->all();
+
+    // Creazione di una nuova istanza del modello Project
+    $newProject = new Project();
+
+    // Assegnazione di tutti i campi basati sulle colonne del database
+    $newProject->name = $data["name"]; 
+    $newProject->client = $data["client"]; 
+    $newProject->period = $data["period"]; 
+    $newProject->summary = $data["summary"]; 
+    $newProject->description = $data["description"]; 
+    $newProject->cover_image = $data["cover_image"]; 
+    $newProject->github_link = $data["github_link"]; 
+    $newProject->live_demo = $data["live_demo"]; 
+    $newProject->tech_stack = $data["tech_stack"]; 
+
+    // Salvataggio nel database
+    $newProject->save();
+
+    // Redirezione alla rotta index dei progetti
+    return redirect()->route('projects.index', $newProject); 
+}
 
     /**
      * Display the specified resource.
