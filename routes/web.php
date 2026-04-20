@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\Admin\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 // Rotta pubblica (Home)
@@ -19,7 +19,7 @@ Route::middleware(['auth', 'verified'])
         // Questa è la tua nuova Dashboard principale: URL è /admin
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource("project", ProjectsController::class);
+        Route::resource("projects", ProjectsController::class);
     
         
         // Gestione Profilo dentro l'admin
