@@ -13,8 +13,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects= Project:: all();
-        return view ("projects.index", compact("projects"));
+        $projects = Project::all();
+        return view("projects.index", compact("projects"));
     }
 
     /**
@@ -28,31 +28,31 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
-{
-    // Recupero tutti i dati dalla richiesta
-    $data = $request->all();
+    public function store(Request $request)
+    {
+        // Recupero tutti i dati dalla richiesta
+        $data = $request->all();
 
-    // Creazione di una nuova istanza del modello Project
-    $newProject = new Project();
+        // Creazione di una nuova istanza del modello Project
+        $newProject = new Project();
 
-    // Assegnazione di tutti i campi basati sulle colonne del database
-    $newProject->name = $data["name"]; 
-    $newProject->client = $data["client"]; 
-    $newProject->period = $data["period"]; 
-    $newProject->summary = $data["summary"]; 
-    $newProject->description = $data["description"]; 
-    $newProject->cover_image = $data["cover_image"]; 
-    $newProject->github_link = $data["github_link"]; 
-    $newProject->live_demo = $data["live_demo"]; 
-    $newProject->tech_stack = $data["tech_stack"]; 
+        // Assegnazione di tutti i campi basati sulle colonne del database
+        $newProject->name = $data["name"];
+        $newProject->client = $data["client"];
+        $newProject->period = $data["period"];
+        $newProject->summary = $data["summary"];
+        $newProject->description = $data["description"];
+        $newProject->cover_image = $data["cover_image"];
+        $newProject->github_link = $data["github_link"];
+        $newProject->live_demo = $data["live_demo"];
+        $newProject->tech_stack = $data["tech_stack"];
 
-    // Salvataggio nel database
-    $newProject->save();
+        // Salvataggio nel database
+        $newProject->save();
 
-    // Redirezione alla rotta index dei progetti
-    return redirect()->route('admin.projects.index', $newProject); 
-}
+        // Redirezione alla rotta index dei progetti
+        return redirect()->route('admin.projects.index', $newProject);
+    }
 
     /**
      * Display the specified resource.
@@ -65,17 +65,30 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view("projects.edit", compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->name = $data["name"];
+        $project->client = $data["client"];
+        $project->period = $data["period"];
+        $project->summary = $data["summary"];
+        $project->description = $data["description"];
+        $project->cover_image = $data["cover_image"];
+        $project->github_link = $data["github_link"];
+        $project->live_demo = $data["live_demo"];
+        $project->tech_stack = $data["tech_stack"];
+
+        $project->update();
+        return redirect()-> route("admin.projects.show", $project);
+
     }
 
     /**

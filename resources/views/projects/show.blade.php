@@ -12,6 +12,15 @@
                     @if($project->tech_stack)
                         <p><small>Tecnologie: {{ $project->tech_stack }}</small></p>
                     @endif
+
+
+                    
+                    {{-- Bottone modifica --}}
+                    <div class="mt-3">
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning btn-sm">
+                            Modifica
+                        </a>
+                    </div>
                 </div>
             </div>
 @endsection
